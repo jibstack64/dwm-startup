@@ -1,1 +1,13 @@
-/home/joseph/.xprofile
+#!/usr/bin/sh
+
+# Run start script
+"$HOME/.xscripts/start.sh"
+
+# Detect dwm close
+( sleep 3; ( while true; do
+	if [[ "$(ps -A | grep dwm)" == "" ]]; then
+		"$HOME/.xscripts/exit.sh"
+		break
+	fi
+done ) ) &
+
